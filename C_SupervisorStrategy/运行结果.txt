@@ -1,0 +1,94 @@
+"D:\Program Files\Java\jdk1.8.0_121\bin\java.exe" "-javaagent:D:\Program Files\JetBrains\IntelliJ IDEA 2021.1\lib\idea_rt.jar=52861:D:\Program Files\JetBrains\IntelliJ IDEA 2021.1\bin" -Dfile.encoding=UTF-8 -classpath "D:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\deploy.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\access-bridge-64.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\cldrdata.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\dnsns.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jaccess.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\jfxrt.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\localedata.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\nashorn.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunec.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunjce_provider.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunmscapi.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\sunpkcs11.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\ext\zipfs.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\javaws.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\jfxswt.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\management-agent.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\plugin.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar;D:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar;E:\idea_workspace\akka\C_SupervisorStrategy\target\classes;E:\maven_repository\com\typesafe\akka\akka-actor-typed_2.13\2.5.25\akka-actor-typed_2.13-2.5.25.jar;E:\maven_repository\org\scala-lang\scala-library\2.13.0\scala-library-2.13.0.jar;E:\maven_repository\com\typesafe\akka\akka-actor_2.13\2.5.25\akka-actor_2.13-2.5.25.jar;E:\maven_repository\com\typesafe\config\1.3.3\config-1.3.3.jar;E:\maven_repository\org\scala-lang\modules\scala-java8-compat_2.13\0.9.0\scala-java8-compat_2.13-0.9.0.jar;E:\maven_repository\ch\qos\logback\logback-classic\1.2.3\logback-classic-1.2.3.jar;E:\maven_repository\ch\qos\logback\logback-core\1.2.3\logback-core-1.2.3.jar;E:\maven_repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar" org.example.Main
+preStart hashcode:629128487
+meet NullPointerException,restart
+preRestart hashcode:629128487
+preStart hashcode:1921369332
+postRestart hashcode:1921369332
+meet NullPointerException,restart
+preRestart hashcode:1921369332
+preStart hashcode:1373960457
+postRestart hashcode:1373960457
+meet NullPointerException,restart
+preRestart hashcode:1373960457
+preStart hashcode:1954522478
+postRestart hashcode:1954522478
+meet NullPointerException,restart
+[ERROR] [01/25/2022 13:42:06.538] [lifecycle-akka.actor.default-dispatcher-4] [akka://lifecycle/user/Supervisor/restartActor] null
+java.lang.NullPointerException
+	at org.example.RestartActor.onReceive(RestartActor.java:42)
+	at akka.actor.UntypedActor$$anonfun$receive$1.applyOrElse(UntypedActor.scala:167)
+	at akka.actor.Actor.aroundReceive(Actor.scala:539)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:537)
+	at akka.actor.UntypedActor.aroundReceive(UntypedActor.scala:97)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:612)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:581)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:268)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:229)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:241)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+postStop hashcode:1954522478
+[ERROR] [01/25/2022 13:42:06.540] [lifecycle-akka.actor.default-dispatcher-3] [akka://lifecycle/user/Supervisor/restartActor] null
+java.lang.NullPointerException
+	at org.example.RestartActor.onReceive(RestartActor.java:42)
+	at akka.actor.UntypedActor$$anonfun$receive$1.applyOrElse(UntypedActor.scala:167)
+	at akka.actor.Actor.aroundReceive(Actor.scala:539)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:537)
+	at akka.actor.UntypedActor.aroundReceive(UntypedActor.scala:97)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:612)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:581)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:268)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:229)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:241)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+[ERROR] [01/25/2022 13:42:06.541] [lifecycle-akka.actor.default-dispatcher-4] [akka://lifecycle/user/Supervisor/restartActor] null
+java.lang.NullPointerException
+	at org.example.RestartActor.onReceive(RestartActor.java:42)
+	at akka.actor.UntypedActor$$anonfun$receive$1.applyOrElse(UntypedActor.scala:167)
+	at akka.actor.Actor.aroundReceive(Actor.scala:539)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:537)
+	at akka.actor.UntypedActor.aroundReceive(UntypedActor.scala:97)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:612)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:581)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:268)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:229)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:241)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+[ERROR] [01/25/2022 13:42:06.541] [lifecycle-akka.actor.default-dispatcher-4] [akka://lifecycle/user/Supervisor/restartActor] null
+java.lang.NullPointerException
+	at org.example.RestartActor.onReceive(RestartActor.java:42)
+	at akka.actor.UntypedActor$$anonfun$receive$1.applyOrElse(UntypedActor.scala:167)
+	at akka.actor.Actor.aroundReceive(Actor.scala:539)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:537)
+	at akka.actor.UntypedActor.aroundReceive(UntypedActor.scala:97)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:612)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:581)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:268)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:229)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:241)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+[INFO] [01/25/2022 13:42:06.544] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [1] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.544] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [2] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.544] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [3] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.544] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [4] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.545] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [5] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.545] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [6] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.545] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [7] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.545] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [8] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.545] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [9] dead letters encountered. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+[INFO] [01/25/2022 13:42:06.545] [lifecycle-akka.actor.default-dispatcher-2] [akka://lifecycle/user/Supervisor/restartActor] Message [org.example.RestartActor$Msg] without sender to Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082] was not delivered. [10] dead letters encountered, no more dead letters will be logged. If this is not an expected behavior, then [Actor[akka://lifecycle/user/Supervisor/restartActor#-644790082]] may have terminated unexpectedly, This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
