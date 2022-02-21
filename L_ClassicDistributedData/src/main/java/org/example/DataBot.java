@@ -22,7 +22,7 @@ import akka.event.LoggingAdapter;
 
 
 /**
- * @description: https://doc.akka.io/docs/akka/current/distributed-data.html
+ * @description: https://doc.akka.io/docs/akka/current/distributed-data.html#using-the-replicator
  * Using the Replicator
  * @author: xiaoliang
  * @date: 2022/2/21 10:00
