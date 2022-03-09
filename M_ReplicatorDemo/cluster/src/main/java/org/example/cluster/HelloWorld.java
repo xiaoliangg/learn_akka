@@ -1,11 +1,11 @@
 package org.example.cluster;
 
-import akka.actor.AbstractActor;
-import akka.actor.ActorRef;
-import akka.actor.Props;
+import akka.actor.*;
+import akka.japi.pf.DeciderBuilder;
 import org.example.msg.CommonReqMsg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scala.concurrent.duration.Duration;
 
 /**
  * @description:
@@ -38,9 +38,25 @@ public class HelloWorld extends AbstractActor {
                     getContext().stop(getSelf());
                 })
                 .match(CommonReqMsg.class,msg -> {
-                    greeter.tell(Greeter.Msg.GREET,getSelf());
                     logger.info("helloWorld msg is:" ,msg.toString());
+                    System.out.println("11111111111111111");
+                    greeter.tell(Greeter.Msg.GREET,getSelf());
                 })
                 .build();
     }
+
+
+
+    private SupervisorStrategy strategy =
+            new OneForOneStrategy(-1, Duration.Inf(),
+                    DeciderBuilder.matchAny(e -> {
+                        logger.error(getSelf().path().toStringWithoutAddress() + "'s child ", e);
+                        return SupervisorStrategy.resume();
+                    }).build());
+
+    @Override
+    public SupervisorStrategy supervisorStrategy() {
+        return strategy;
+    }
+
 }

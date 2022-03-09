@@ -3,8 +3,17 @@ package org.example.cluster;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.cluster.client.ClusterClientReceptionist;
+import akka.cluster.client.ClusterReceptionist;
+import akka.cluster.client.ClusterReceptionistSettings;
+import akka.cluster.pubsub.DistributedPubSub;
+import akka.cluster.pubsub.DistributedPubSubMediator;
+import akka.cluster.sharding.ClusterSharding;
+import akka.cluster.sharding.ClusterShardingSettings;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 输出分析
@@ -22,6 +31,8 @@ import com.typesafe.config.ConfigFactory;
  * @date: 2022/1/25 9:47
  **/
 public class HelloMainSimple {
+    private Logger logger = LoggerFactory.getLogger(HelloMainSimple.class);
+
     public static void main(String[] args) {
         String port = args[0];
 //        String port = "15033";
@@ -33,8 +44,20 @@ public class HelloMainSimple {
         // ActorSystem 是管理和维护Actor的系统。一个应用程序只需要一个ActorSys1tem就够用了。
         // 参数1表示系统名称。参数2表示配置文件
         ActorSystem system = ActorSystem.create("ClusterSystemTest", config);
+
+
+        System.out.println("start register actors to DistributedPubSub");
+
+        ActorRef mediator = DistributedPubSub.get(system).mediator();
+
         // ActorSystem 创建的Actor为顶级Actor
         ActorRef a = system.actorOf(Props.create(HelloWorld.class),"helloWorld");
+        mediator.tell(new DistributedPubSubMediator.Put(a), ActorRef.noSender());
         System.out.println("HelloWorld Actor Path:" + a.path());
+
+        // start user receptionist
+        ClusterReceptionistSettings clusterReceptionistSettings = ClusterReceptionistSettings.create(system);
+        ActorRef userReceptionist = system.actorOf(Props.create(ClusterReceptionist.class, mediator, clusterReceptionistSettings), "receptionist");
+
     }
 }
