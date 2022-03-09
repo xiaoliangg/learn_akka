@@ -3,6 +3,9 @@ package org.example.cluster;
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
+import org.example.msg.CommonReqMsg;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @description:
@@ -10,6 +13,8 @@ import akka.actor.Props;
  * @date: 2022/1/25 9:26
  **/
 public class HelloWorld extends AbstractActor {
+    private Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+
     ActorRef greeter;
 
     /**
@@ -31,6 +36,10 @@ public class HelloWorld extends AbstractActor {
                     greeter.tell(Greeter.Msg.GREET,getSelf());
                     // 终止自己
                     getContext().stop(getSelf());
+                })
+                .match(CommonReqMsg.class,msg -> {
+                    greeter.tell(Greeter.Msg.GREET,getSelf());
+                    logger.info("helloWorld msg is:" ,msg.toString());
                 })
                 .build();
     }

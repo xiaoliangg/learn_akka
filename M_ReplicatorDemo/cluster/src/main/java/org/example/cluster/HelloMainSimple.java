@@ -23,8 +23,8 @@ import com.typesafe.config.ConfigFactory;
  **/
 public class HelloMainSimple {
     public static void main(String[] args) {
-//        String port = args[0];
-        String port = "15033";
+        String port = args[0];
+//        String port = "15033";
         final String connectIP = "127.0.0.1";
 
         final Config config = ConfigFactory.parseString("akka.remote.netty.tcp.port=" + port).
@@ -32,7 +32,7 @@ public class HelloMainSimple {
                 withFallback(ConfigFactory.load("samplehello.conf"));
         // ActorSystem 是管理和维护Actor的系统。一个应用程序只需要一个ActorSys1tem就够用了。
         // 参数1表示系统名称。参数2表示配置文件
-        ActorSystem system = ActorSystem.create("hello", config);
+        ActorSystem system = ActorSystem.create("ClusterSystemTest", config);
         // ActorSystem 创建的Actor为顶级Actor
         ActorRef a = system.actorOf(Props.create(HelloWorld.class),"helloWorld");
         System.out.println("HelloWorld Actor Path:" + a.path());

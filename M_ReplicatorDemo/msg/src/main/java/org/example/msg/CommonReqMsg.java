@@ -57,5 +57,12 @@ public class CommonReqMsg implements Serializable {
         this.event = event;
     }
 
-
+    @Override
+    public String toString() {
+        return "CommonReqMsg{" +
+                "from='" + from + '\'' +
+                ", msgId='" + msgId + '\'' +
+                ", event=" + event +
+                '}';
+    }
 }
