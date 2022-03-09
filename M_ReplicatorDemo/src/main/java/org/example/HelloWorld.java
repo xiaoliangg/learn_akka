@@ -1,5 +1,6 @@
 package org.example;
 
+import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
@@ -9,7 +10,7 @@ import akka.actor.UntypedActor;
  * @author: yuliang
  * @date: 2022/1/25 9:26
  **/
-public class HelloWorld extends UntypedActor {
+public class HelloWorld extends AbstractActor {
     ActorRef greeter;
 
     /**
@@ -25,13 +26,13 @@ public class HelloWorld extends UntypedActor {
     }
 
     @Override
-    public void onReceive(Object message) throws Throwable {
-        if(message == Greeter.Msg.DONE){
-            greeter.tell(Greeter.Msg.GREET,getSelf());
-            // 终止自己
-            getContext().stop(getSelf());
-        }else{
-            unhandled(message);
-        }
+    public Receive createReceive() {
+        return receiveBuilder()
+                .match(Greeter.Msg.DONE.getClass(), msg -> {
+                    greeter.tell(Greeter.Msg.GREET,getSelf());
+                    // 终止自己
+                    getContext().stop(getSelf());
+                })
+                .build();
     }
 }
