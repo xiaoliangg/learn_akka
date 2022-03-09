@@ -1,9 +1,8 @@
-package org.example;
+package org.example.cluster;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Props;
-import akka.actor.UntypedActor;
 
 /**
  * @description:

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.cluster;
 
 import akka.actor.AbstractActor;
 import akka.actor.PoisonPill;

@@ -1,8 +1,9 @@
-package org.example;
+package org.example.cluster;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 
 /**
@@ -22,9 +23,13 @@ import com.typesafe.config.ConfigFactory;
  **/
 public class HelloMainSimple {
     public static void main(String[] args) {
+        final Config config = ConfigFactory.parseString("akka.remote.netty.tcp.port=" + 15030).
+//                withFallback(ConfigFactory.parseString("akka.actor.creation-timeout=" + 60)).
+                withFallback(ConfigFactory.parseString("akka.remote.netty.tcp.hostname=" + "127.0.0.1")).
+                withFallback(ConfigFactory.load("samplehello.conf"));
         // ActorSystem 是管理和维护Actor的系统。一个应用程序只需要一个ActorSys1tem就够用了。
         // 参数1表示系统名称。参数2表示配置文件
-        ActorSystem system = ActorSystem.create("hello", ConfigFactory.load("samplehello.conf"));
+        ActorSystem system = ActorSystem.create("hello", config);
         // ActorSystem 创建的Actor为顶级Actor
         ActorRef a = system.actorOf(Props.create(HelloWorld.class),"helloWorld");
         System.out.println("HelloWorld Actor Path:" + a.path());
