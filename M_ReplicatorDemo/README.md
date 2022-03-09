@@ -1,0 +1,2 @@
+创建一个cluster工程，一个client工程。
+cluster工程启动为两个节点，使用client工程发送akka消息。模拟akka服务
