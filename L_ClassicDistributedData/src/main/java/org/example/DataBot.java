@@ -36,6 +36,7 @@ public class DataBot extends AbstractActor {
     private final ActorRef replicator = DistributedData.get(getContext().getSystem()).replicator();
     private final SelfUniqueAddress node =
             DistributedData.get(getContext().getSystem()).selfUniqueAddress();
+    private final Key<ORSet<String>> dataKey = ORSetKey.create("key");
 
     private final Cancellable tickTask =
             getContext()
@@ -49,7 +50,6 @@ public class DataBot extends AbstractActor {
                             getContext().getDispatcher(),
                             getSelf());
 
-    private final Key<ORSet<String>> dataKey = ORSetKey.create("key");
 
     @SuppressWarnings("unchecked")
     @Override
