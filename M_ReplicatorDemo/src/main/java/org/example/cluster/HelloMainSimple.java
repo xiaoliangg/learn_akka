@@ -23,9 +23,12 @@ import com.typesafe.config.ConfigFactory;
  **/
 public class HelloMainSimple {
     public static void main(String[] args) {
-        final Config config = ConfigFactory.parseString("akka.remote.netty.tcp.port=" + 15030).
-//                withFallback(ConfigFactory.parseString("akka.actor.creation-timeout=" + 60)).
-                withFallback(ConfigFactory.parseString("akka.remote.netty.tcp.hostname=" + "127.0.0.1")).
+//        String port = args[0];
+        String port = "15033";
+        final String connectIP = "127.0.0.1";
+
+        final Config config = ConfigFactory.parseString("akka.remote.netty.tcp.port=" + port).
+                withFallback(ConfigFactory.parseString("akka.remote.netty.tcp.hostname=" + connectIP)).
                 withFallback(ConfigFactory.load("samplehello.conf"));
         // ActorSystem 是管理和维护Actor的系统。一个应用程序只需要一个ActorSys1tem就够用了。
         // 参数1表示系统名称。参数2表示配置文件
