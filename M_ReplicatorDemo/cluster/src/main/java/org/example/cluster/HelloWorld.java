@@ -33,9 +33,11 @@ public class HelloWorld extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(Greeter.Msg.DONE.getClass(), msg -> {
-                    greeter.tell(Greeter.Msg.GREET,getSelf());
+                    System.out.println("22222222222222222");
+
+//                    greeter.tell(Greeter.Msg.GREET,getSelf());
                     // 终止自己
-                    getContext().stop(getSelf());
+//                    getContext().stop(getSelf());
                 })
                 .match(CommonReqMsg.class,msg -> {
                     logger.info("helloWorld msg is:" ,msg.toString());
