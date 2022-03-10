@@ -6,6 +6,8 @@ import akka.cluster.pubsub.DistributedPubSubMediator;
 import akka.japi.pf.DeciderBuilder;
 import org.example.cluster.actor.be.GreeterActor;
 import org.example.msg.CommonReqMsg;
+import org.example.msg.GetStudent;
+import org.example.msg.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scala.concurrent.duration.Duration;
@@ -40,12 +42,20 @@ public class HelloWorldActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(GreeterActor.Msg.DONE.getClass(), msg -> {
-                    System.out.println("22222222222222222");
+                    logger.info("greeter telling me he has finished it");
                     // 终止自己
 //                    getContext().stop(getSelf());
                 })
+                .match(Student.class, msg -> {
+                    logger.info("helloWorld Student msg is:{}" ,msg.toString());
+                    greeter.tell(msg,getSelf());
+                })
+                .match(GetStudent.class, msg -> {
+                    logger.info("helloWorld GetStudent msg is:{}" ,msg.toString());
+                    greeter.tell(msg,getSelf());
+                })
                 .match(CommonReqMsg.class,msg -> {
-                    logger.info("helloWorld msg is:{}" ,msg.toString());
+                    logger.info("helloWorld CommonReqMsg msg is:{}" ,msg.toString());
                     System.out.println("11111111111111111");
                 })
                 .build();
@@ -63,6 +73,12 @@ public class HelloWorldActor extends AbstractActor {
     @Override
     public SupervisorStrategy supervisorStrategy() {
         return strategy;
+    }
+
+    @Override
+    public void postStop() throws Exception {
+        logger.info(this.getClass().getName() + " postStop");
+        super.postStop();
     }
 
 }

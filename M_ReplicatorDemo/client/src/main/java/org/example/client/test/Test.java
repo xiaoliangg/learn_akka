@@ -1,6 +1,7 @@
-package org.example.client;
+package org.example.client.test;
 
 
+import org.example.client.AKKAClient;
 import org.example.msg.CommonReqMsg;
 
 /**
@@ -14,6 +15,6 @@ public class Test {
         msg.setMsgId("1871029");
         msg.setEvent(9211);
         msg.setFrom("stranger");
-        AKKAClient.getInstance().send("/user/helloWorld/greeter",msg);
+        AKKAClient.getInstance().send("/user/helloWorld",msg);
     }
 }

@@ -5,8 +5,10 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.cluster.pubsub.DistributedPubSub;
 import akka.cluster.pubsub.DistributedPubSubMediator;
+import akka.event.LoggingAdapter;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import org.example.cluster.actor.cache.StudentCacheActor;
 import org.example.cluster.actor.fe.HelloWorldActor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +29,7 @@ import org.slf4j.LoggerFactory;
  * @date: 2022/1/25 9:47
  **/
 public class Main {
-    private Logger logger = LoggerFactory.getLogger(Main.class);
+    private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
         String port = args[0];
@@ -38,7 +40,12 @@ public class Main {
                 .withFallback(ConfigFactory.load("clusterconfig.conf"));
         ActorSystem system = ActorSystem.create("ClusterSystemTest", config);
         ActorRef mediator = DistributedPubSub.get(system).mediator();
+        logger.info("start create back-end actor...");
 
+        logger.info("start create cache actor...");
+        system.actorOf(Props.create(StudentCacheActor.class), "studentCacheActor");
+
+        logger.info("start create front-end actor...");
         ActorRef helloActor = system.actorOf(Props.create(HelloWorldActor.class), "helloWorld");
         mediator.tell(new DistributedPubSubMediator.Put(helloActor), ActorRef.noSender());
 

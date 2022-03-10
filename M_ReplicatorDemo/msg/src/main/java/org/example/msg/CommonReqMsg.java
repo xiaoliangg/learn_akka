@@ -11,9 +11,6 @@ import java.io.Serializable;
  **/
 public class CommonReqMsg implements Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -3169263166233919489L;
     private String from;
     private String msgId;
