@@ -17,7 +17,7 @@ cd M_ReplicatorDemo
 mvn clean install -DskipTests
 ```
 
-2. 运行
+2. 运行集群
 
 ```shel
 cd M_ReplicatorDemo/cluster/target
@@ -25,6 +25,14 @@ java -jar cluster-1.0-SNAPSHOT-shaded.jar 15035
 另启动一个cmd,再运行一个服务节点:
 java -jar cluster-1.0-SNAPSHOT-shaded.jar 15036
 ```
+3.运行客户端
 
-
-
+```shell
+cd M_ReplicatorDemo/client/target
+java -jar client-1.0-SNAPSHOT-shaded.jar
+```
+4.集群某一节点的控制台输出如下信息
+```text
+11111111111111111
+[2022-03-10 12:05:40,548] [INFO] [org.example.cluster.HelloWorld] [ClusterSystemTest-akka.actor.default-dispatcher-17] [] - helloWorld msg is:
+```

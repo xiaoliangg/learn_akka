@@ -37,6 +37,7 @@ public class HelloMainSimple {
                 .withFallback(ConfigFactory.load("clusterconfig.conf"));
         ActorSystem system = ActorSystem.create("ClusterSystemTest", config);
         ActorRef mediator = DistributedPubSub.get(system).mediator();
+
         ActorRef helloActor = system.actorOf(Props.create(HelloWorld.class), "helloWorld");
         mediator.tell(new DistributedPubSubMediator.Put(helloActor), ActorRef.noSender());
     }
