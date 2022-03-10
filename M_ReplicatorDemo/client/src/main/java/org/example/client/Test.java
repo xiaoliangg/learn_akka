@@ -14,6 +14,6 @@ public class Test {
         msg.setMsgId("1871029");
         msg.setEvent(9211);
         msg.setFrom("stranger");
-        AKKAClient.getInstance().send("/user/helloWorld",msg);
+        AKKAClient.getInstance().send("/user/helloWorld/greeter",msg);
     }
 }

@@ -29,7 +29,7 @@ public class HelloWorldActor extends AbstractActor {
         // 创建Greeter时使用的HelloWorld类的上下文，因此greeter是HelloWorld的子Actor
         greeter = getContext().actorOf(Props.create(GreeterActor.class),"greeter");
         System.out.println("Greeter Actor Path:" + greeter.path());
-        // 加入 mediator 后，外部可调用
+        // 加入 DistributedPubSubMediator 后，外部可调用
 //        ActorRef mediator = DistributedPubSub.get(getContext().getSystem()).mediator();
 //        mediator.tell(new DistributedPubSubMediator.Put(greeter), ActorRef.noSender());
 
