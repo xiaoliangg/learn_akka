@@ -1,7 +1,10 @@
-package org.example.cluster;
+package org.example.cluster.actor.fe;
 
 import akka.actor.*;
+import akka.cluster.pubsub.DistributedPubSub;
+import akka.cluster.pubsub.DistributedPubSubMediator;
 import akka.japi.pf.DeciderBuilder;
+import org.example.cluster.actor.be.GreeterActor;
 import org.example.msg.CommonReqMsg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +15,8 @@ import scala.concurrent.duration.Duration;
  * @author: yuliang
  * @date: 2022/1/25 9:26
  **/
-public class HelloWorld extends AbstractActor {
-    private Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+public class HelloWorldActor extends AbstractActor {
+    private Logger logger = LoggerFactory.getLogger(HelloWorldActor.class);
 
     ActorRef greeter;
 
@@ -24,23 +27,25 @@ public class HelloWorld extends AbstractActor {
     public void preStart(){
         // Akka创建Actor实例
         // 创建Greeter时使用的HelloWorld类的上下文，因此greeter是HelloWorld的子Actor
-        greeter = getContext().actorOf(Props.create(Greeter.class),"greeter");
+        greeter = getContext().actorOf(Props.create(GreeterActor.class),"greeter");
         System.out.println("Greeter Actor Path:" + greeter.path());
-        greeter.tell(Greeter.Msg.GREET,getSelf());
+        // 加入 mediator 后，外部可调用
+//        ActorRef mediator = DistributedPubSub.get(getContext().getSystem()).mediator();
+//        mediator.tell(new DistributedPubSubMediator.Put(greeter), ActorRef.noSender());
+
+        greeter.tell(GreeterActor.Msg.GREET,getSelf());
     }
 
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(Greeter.Msg.DONE.getClass(), msg -> {
+                .match(GreeterActor.Msg.DONE.getClass(), msg -> {
                     System.out.println("22222222222222222");
-
-//                    greeter.tell(Greeter.Msg.GREET,getSelf());
                     // 终止自己
 //                    getContext().stop(getSelf());
                 })
                 .match(CommonReqMsg.class,msg -> {
-                    logger.info("helloWorld msg is:" ,msg.toString());
+                    logger.info("helloWorld msg is:{}" ,msg.toString());
                     System.out.println("11111111111111111");
                 })
                 .build();

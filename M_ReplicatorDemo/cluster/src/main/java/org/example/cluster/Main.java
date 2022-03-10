@@ -7,6 +7,7 @@ import akka.cluster.pubsub.DistributedPubSub;
 import akka.cluster.pubsub.DistributedPubSubMediator;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import org.example.cluster.actor.fe.HelloWorldActor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,8 +26,8 @@ import org.slf4j.LoggerFactory;
  * @author: yuliang
  * @date: 2022/1/25 9:47
  **/
-public class HelloMainSimple {
-    private Logger logger = LoggerFactory.getLogger(HelloMainSimple.class);
+public class Main {
+    private Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
         String port = args[0];
@@ -38,7 +39,8 @@ public class HelloMainSimple {
         ActorSystem system = ActorSystem.create("ClusterSystemTest", config);
         ActorRef mediator = DistributedPubSub.get(system).mediator();
 
-        ActorRef helloActor = system.actorOf(Props.create(HelloWorld.class), "helloWorld");
+        ActorRef helloActor = system.actorOf(Props.create(HelloWorldActor.class), "helloWorld");
         mediator.tell(new DistributedPubSubMediator.Put(helloActor), ActorRef.noSender());
+
     }
 }
