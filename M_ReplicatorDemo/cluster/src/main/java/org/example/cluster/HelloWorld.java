@@ -40,7 +40,6 @@ public class HelloWorld extends AbstractActor {
                 .match(CommonReqMsg.class,msg -> {
                     logger.info("helloWorld msg is:" ,msg.toString());
                     System.out.println("11111111111111111");
-                    greeter.tell(Greeter.Msg.GREET,getSelf());
                 })
                 .build();
     }
