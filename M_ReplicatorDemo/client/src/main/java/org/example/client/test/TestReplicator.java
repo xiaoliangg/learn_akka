@@ -13,13 +13,13 @@ import org.example.msg.Student;
  **/
 public class TestReplicator {
     public static void main(String[] args) {
-//        for (int i = 0; i < 1; i++) {
-//            Student student = new Student();
-//            student.setMsgId("1234987");
-//            student.setId(139);
-//            student.setName("liang");
-//            AKKAClient.getInstance().send("/user/helloWorld",student);
-//        }
+        for (int i = 0; i < 1; i++) {
+            Student student = new Student();
+            student.setMsgId("1234987");
+            student.setId(139);
+            student.setName("lianghaha");
+            AKKAClient.getInstance().send("/user/helloWorld",student);
+        }
         //获取
         GetStudent student = new GetStudent();
         student.setMsgId("100000111");
