@@ -23,6 +23,7 @@ public class WatchActor extends UntypedActor {
     private final LoggingAdapter log = Logging.getLogger(getContext().system(),this);
 
     public Router router;
+
     {
         List<Routee> routees = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -43,10 +44,11 @@ public class WatchActor extends UntypedActor {
                     + router.routees().size());
             if(router.routees().size() == 0){
                 System.out.println("Close System");
-                // todo RouteMain 是什么含义？
-                RouteMain.flag.send();
+                // RouteMain 是主类
+                RouteMain.flag.send(false);
                 // todo 如何关闭ActorSystem?
 //                getContext().system().shutdown();
+                getContext().system().terminate();
             }
         }else {
             unhandled(message);
