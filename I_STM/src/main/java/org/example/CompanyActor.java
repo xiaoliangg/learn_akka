@@ -14,7 +14,7 @@ public class CompanyActor extends UntypedActor {
     private Ref.View<Integer> count = STM.newRef(100);
 
     @Override
-    public void onReceive(Object message) throws Throwable {
+    public void onReceive(Object message) {
         if(message instanceof Coordinated){
             final Coordinated c = (Coordinated) message;
             final int downCount = (Integer) c.getMessage();
