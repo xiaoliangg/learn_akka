@@ -24,7 +24,7 @@ public class STMDemo {
     public static void main(String[] args) throws Exception {
         final ActorSystem system = ActorSystem.create("transactionDemo", ConfigFactory.load("samplehello.conf"));
         company = system.actorOf(Props.create(CompanyActor.class),"companyActor");
-        employee = system.actorOf(Props.create(EmployeeActor.class),"employActor");
+        employee = system.actorOf(Props.create(EmployeeActor.class),"employeeActor");
 
         Timeout timeout = new Timeout(1,TimeUnit.SECONDS);
 
