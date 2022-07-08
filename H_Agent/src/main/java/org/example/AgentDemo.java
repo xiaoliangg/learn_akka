@@ -48,6 +48,7 @@ public class AgentDemo {
             }
         }
         // 等待所有的累加线程完成，因为它们都是异步的
+        // yl Futures.sequence 的作用:当所有的Future都完成后，才会返回一个Future，这个Future的结果就是所有的Future的结果的集合。
         Futures.sequence(futures,system.dispatcher()).onComplete(
                 new OnComplete<Iterable<Integer>>() {
                     @Override
