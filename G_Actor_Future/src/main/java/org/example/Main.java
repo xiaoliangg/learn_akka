@@ -25,6 +25,9 @@ public class Main {
 
         // 等待Future返回 todo 以下两个超时时间的含义不理解
 //        Future<Object> f = Patterns.ask(worker,5,6500);
+//        Future<Object> f = Patterns.ask(worker,5,1500);
+        // 超时时间大于和小于上行代码超时时间时，超时报错不一样。 可能原因:没有超时，但是 MyWorker没有返回值
+//        int result = (int) Await.result(f,Duration.create(10,TimeUnit.SECONDS));
 //        int result = (int) Await.result(f,Duration.create(6,TimeUnit.SECONDS));
 //        System.out.println("result:" + result);
 

@@ -15,7 +15,7 @@ public class MyWorker extends UntypedActor {
     @Override
     public void onReceive(Object message) throws Throwable {
         log.info("akka.future.MyWorker.onReceive:" + message);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         if(message instanceof Integer){
             log.info("MyWorker:" + message);
         }else{

@@ -14,10 +14,10 @@ public class Printer extends UntypedActor {
 
     @Override
     public void onReceive(Object message) throws Throwable {
-        log.info("akka.future.Printer.onReceive:" + message);
+        log.info("我的printer:" + message);
 
         if(message instanceof Integer){
-            log.info("printer:" + message);
+            log.info("打印消息:" + message);
         }else{
             unhandled(message);
         }
