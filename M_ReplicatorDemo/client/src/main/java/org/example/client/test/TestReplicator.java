@@ -2,6 +2,7 @@ package org.example.client.test;
 
 
 import org.example.client.AKKAClient;
+import org.example.client.utils.DateUtils;
 import org.example.msg.CommonReqMsg;
 import org.example.msg.GetStudent;
 import org.example.msg.Student;
@@ -17,7 +18,7 @@ public class TestReplicator {
 //            Student student = new Student();
 //            student.setMsgId("1234987");
 //            student.setId(139);
-//            student.setName("lianghaha");
+//            student.setName("lianghaha_" + DateUtils.getNowTime());
 //            AKKAClient.getInstance().send("/user/helloWorld",student);
 //        }
         //获取

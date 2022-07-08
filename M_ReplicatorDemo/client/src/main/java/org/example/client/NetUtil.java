@@ -144,6 +144,6 @@ public class NetUtil {
 
 
     public static void main( String[] args ) {
-        System.out.println( getLocalIPList() );
+        logger.info( getLocalIPList() );
     }
 }

@@ -64,9 +64,23 @@ public class StudentCacheActor extends AbstractActor {
                 + "." + Thread.currentThread().getStackTrace()[1].getMethodName()
                 + ":" + msg.toString());
         Optional<Object> ctx = Optional.of(new Request(msg.getId(), sender()));
+        // LWWMap 用于 1.存储本地数据  2.与其他节点同步数据
         Replicator.Update<LWWMap<Integer,List<Student>>> update =
-                new Replicator.Update<>(studentKey(msg.getId()), LWWMap.create(), writeAll,
-                ctx,  curr -> curr.put(node, msg.getId(), msg.getData()));
+                new Replicator.Update<>(
+                        // key: Key[A]  studentKey(msg.getId()) 返回 Key<LWWMap<Integer, List<Student>>> 类型的key，
+                        // 后面 getMsg方法可以使用此key作为查询条件，去缓存中查询到匹配的缓存，
+                        studentKey(msg.getId()),
+                        // initial: A   初始化 LWWMap，首次会创建，后续使用之前创建好的
+                        LWWMap.create(),
+                        // writeConsistency: WriteConsistency   //写入策略，写入所有节点
+                        writeAll,
+                        // request: Optional[Any]。携带 msg.id,sender()
+                        ctx,
+                        // 1. curr 为 LWWMap<Integer, List<Student>> 类型，此参数为函数接口,用于缓存，LWWMap.put(集群节点,key,value)。
+                        // 2. 其他:观察studentKey()的返回值,可发现 curr的类型为key的泛型类型。
+                        curr -> curr.put(node, msg.getId(), msg.getData()));
+
+        // 会回调 receiveUpdateSuccess() 或 receiveUpdateFailure()
         replicator.tell(update, self());
     }
 

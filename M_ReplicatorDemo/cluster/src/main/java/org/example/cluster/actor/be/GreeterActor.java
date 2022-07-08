@@ -38,7 +38,7 @@ public class GreeterActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(Msg.GREET.getClass(), msg -> {
-                    System.out.println("Hello World!");
+                    logger.info("Hello World!");
                     // 向消息发送方发送DONE消息
                     getSender().tell(Msg.DONE,getSender());
                 })
@@ -56,7 +56,7 @@ public class GreeterActor extends AbstractActor {
     }
 
     private void cacheStudentMsg(Student student) {
-        logger.info("start notify studentCacheActor to cache student..");
+        logger.info("start notify studentCacheActor to cache student:{}" ,student.toString());
         studentCacheActor.tell(new StudentCacheActor.StudentUpdateMsg
                         (student.getId(), Stream.of(student).collect(Collectors.toList())),
                         getSelf());
@@ -64,7 +64,7 @@ public class GreeterActor extends AbstractActor {
     }
 
     private void getStudentMsg(GetStudent student) {
-        logger.info("start use studentCacheActor to get student cache ..");
+        logger.info("start use studentCacheActor to get student cache:{}" ,student.toString());
         studentCacheActor.tell(new GetMsg(student.getId()),getSelf());
     }
 }
