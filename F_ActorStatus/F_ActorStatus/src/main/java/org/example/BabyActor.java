@@ -54,6 +54,7 @@ public class BabyActor extends UntypedActor {
         if(message == Msg.SLEEP){
             getContext().become(angry);
         }else if(message == Msg.PLAY){
+            // getContext().become(Procedure) 的作用:下次再来消息，使用新的Procedure处理消息
             getContext().become(happy);
         }else {
             unhandled(message);
