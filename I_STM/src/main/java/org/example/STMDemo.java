@@ -12,7 +12,8 @@ import scala.concurrent.Await;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @description:
+ * @description:《实战java高并发程序设计第2版》7.12 像数据库一样操作内存数据:
+ * 软件事务内存STM(Software Transactional Memory)
  * @author: yuliang
  * @date: 2022/1/26 11:19
  **/
