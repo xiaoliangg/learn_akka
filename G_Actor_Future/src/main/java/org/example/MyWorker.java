@@ -18,6 +18,7 @@ public class MyWorker extends UntypedActor {
         Thread.sleep(1000);
         if(message instanceof Integer){
             log.info("MyWorker:" + message);
+            getSender().tell("这是一个响应",self());
         }else{
             unhandled(message);
         }
